@@ -37,7 +37,9 @@ export class HomeComponent implements OnInit {
     }
   
     nextPage() {
+      console.log('testtttttt : ',this.resources.next_page_url);
       this.service.getResourcesAtUrl(this.resources.next_page_url).then(resources=>this.resources = resources);
+      console.log('this.resources : ',this.resources);
     }
   
 

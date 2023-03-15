@@ -28,7 +28,7 @@ export class ResourcespaginationService {
 
     getResourcesAtUrl(url: string): Promise<PaginatedResource>{
       this.isLoading = true;
-      return this.http.get('http://127.0.0.1:8000/api/resource')
+      return this.http.get(url)
       .toPromise()
       .then((response) => {
           this.isLoading = false;
