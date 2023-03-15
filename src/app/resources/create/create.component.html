@@ -1,1 +1,18 @@
-<p>create works!</p>
+<div class="container">
+    <legend>Nouvelle Resource</legend>
+    <form>
+      <div class="mb-3">
+        <label for="txtName" class="form-label">Nom</label>
+        <input type="text" name="name" [(ngModel)] = "resourceForm.name" class="form-control" id="txtName" />
+      </div>
+      <div class="mb-3">
+        <label for="txtDescription" class="form-label">Description</label>
+        <input type="text" name="description" [(ngModel)] = "resourceForm.description" class="form-control" id="txtDescription" />
+      </div>
+      <div class="mb-3">
+        <label for="txtType" class="form-label">Type</label>
+        <input type="text" name="type" [(ngModel)] = "resourceForm.type" class="form-control" id="txtType" />
+      </div>
+      <button type="button" (click)="create()" class="btn btn-primary">Create</button>
+    </form>
+  </div>
