@@ -16,7 +16,7 @@ export class EditComponent implements OnInit {
     description: '',
     type: '',
   };
-
+  TypeList = ['option1', 'option2', 'option3'];
 
   constructor(
     private route: ActivatedRoute,

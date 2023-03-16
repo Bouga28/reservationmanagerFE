@@ -15,6 +15,7 @@ export class CreateComponent implements OnInit {
     description: '',
     type: '',
   };
+  TypeList = ['option1', 'option2', 'option3'];
  
   constructor(private resourceService:ResourcesService,
     private router:Router) {}

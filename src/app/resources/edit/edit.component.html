@@ -10,8 +10,13 @@
             <input type="text" name="description" [(ngModel)] = "resourceForm.description" class="form-control" id="txtDescription" />
           </div>
           <div class="mb-3">
-            <label for="txtType" class="form-label">Type</label>
-            <input type="text" name="type" [(ngModel)] = "resourceForm.type" class="form-control" id="txtType" />
+            <label class="form-label">Type</label>
+          <select class="dropdownlist" [(ngModel)]="resourceForm.type" name="type" class="form-control">
+            <!--option value="" selected="selected" disabled="disabled">test</option-->
+            <option *ngFor="let item of TypeList" [value]="item">
+              {{item}}
+            </option>
+          </select>
           </div>
       <button type="button" (click)="update()" class="btn btn-primary">Update</button>
     </form>
