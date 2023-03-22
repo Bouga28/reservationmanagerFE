@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Type } from 'src/app/types/type';
+import { TypeService } from 'src/app/types/type.service';
 import { Resource } from '../resource';
 import {ResourcesService} from '../resources.service';
  
@@ -13,15 +15,28 @@ export class CreateComponent implements OnInit {
     id: 0,
     name: '',
     description: '',
-    type: '',
+    type_id: '',
   };
-  TypeList = ['option1', 'option2', 'option3'];
+  TypeList : Type[] = [];
  
   constructor(private resourceService:ResourcesService,
+    private typeService:TypeService,
     private router:Router) {}
  
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.get();
+  }
  
+  get() {
+    this.typeService.get().subscribe((data) => {
+      console.log("data = --------",data);
+      this.TypeList = data;
+    });
+  }
+
+
+
+
   create(){
     this.resourceService.create(this.resourceForm)
     .subscribe({

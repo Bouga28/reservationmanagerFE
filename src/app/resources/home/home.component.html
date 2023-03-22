@@ -24,7 +24,7 @@
           <th scope="row">{{ r.id }}</th>
           <td>{{ r.name }}</td>
           <td>{{ r.description }}</td>
-          <td>{{ r.type }}</td>
+          <td>{{ r.type_id }}</td>
           <td>
             <a class="btn btn-primary" [routerLink]="['/resources/edit/', r.id]">Edit</a>
             <button type="button" (click)="openDeleteModal(r.id)" class="btn btn-danger">Delete</button>

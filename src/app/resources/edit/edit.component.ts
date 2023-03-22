@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Type } from 'src/app/types/type';
+import { TypeService } from 'src/app/types/type.service';
 import { Resource } from '../resource';
 import { ResourcesService } from '../resources.service';
 
@@ -14,23 +16,34 @@ export class EditComponent implements OnInit {
     id: 0,
     name: '',
     description: '',
-    type: '',
+    type_id: '',
   };
-  TypeList = ['option1', 'option2', 'option3'];
+  TypeList : Type[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private router:Router,
-    private resourceService: ResourcesService
+    private resourceService: ResourcesService,
+    private typeService:TypeService
   ) {}
  
   ngOnInit(): void {
+    this.get();
     this.route.paramMap.subscribe((param) => {
       var id = Number(param.get('id'));
       this.getById(id);
     });
+
   }
  
+  get() {
+    this.typeService.get().subscribe((data) => {
+      console.log("data = --------",data);
+      this.TypeList = data;
+    });
+  }
+
+
   getById(id: number) {
     this.resourceService.getById(id).subscribe((data) => {
       this.resourceForm = data;
