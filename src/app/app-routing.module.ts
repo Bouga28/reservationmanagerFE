@@ -7,6 +7,11 @@ const routes: Routes = [
     redirectTo: 'resources/home',
     pathMatch: 'full',
   },
+  {
+    path: 'types',
+    redirectTo: 'types/home',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

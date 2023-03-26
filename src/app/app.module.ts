@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReservationsModule } from './reservations/reservations.module';
 import { ResourcesModule } from './resources/resources.module';
+import { TypesModule } from './types/types.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ResourcesModule } from './resources/resources.module';
     AppRoutingModule,
     HttpClientModule,
     ResourcesModule,
-    ReservationsModule
+    ReservationsModule,
+    TypesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
