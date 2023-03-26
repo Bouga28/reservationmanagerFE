@@ -1,3 +1,4 @@
+import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Type } from 'src/app/types/type';
@@ -16,6 +17,7 @@ export class CreateComponent implements OnInit {
     name: '',
     description: '',
     type_id: '',
+    type: {id: 0, name:'', slug: ''}
   };
   TypeList : Type[] = [];
  

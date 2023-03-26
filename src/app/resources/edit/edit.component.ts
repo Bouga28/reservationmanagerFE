@@ -17,6 +17,7 @@ export class EditComponent implements OnInit {
     name: '',
     description: '',
     type_id: '',
+    type: {id: 0, name:'', slug: ''}
   };
   TypeList : Type[] = [];
 
