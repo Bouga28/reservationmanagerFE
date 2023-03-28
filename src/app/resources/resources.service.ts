@@ -10,6 +10,7 @@ export class ResourcesService {
   constructor(private http: HttpClient) { }
 
   get() {
+    console.log("GET RESOURCES ...... ");
     return this.http.get<Resource[]>('http://127.0.0.1:8000/api/resources');
   }
   create(payload: Resource) {

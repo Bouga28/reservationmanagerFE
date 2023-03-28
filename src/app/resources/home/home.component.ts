@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
 
 
       this.service.getResources().then(resources=>{
-        console.log('data = ', resources.data);
+        console.log('NGONINIT data = ', resources);
         this.resources = resources;});
     }
   

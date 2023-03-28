@@ -16,10 +16,12 @@ export class ResourcespaginationService {
     constructor(private http: HttpClient) { }
     
     getResources(): Promise<PaginatedResource>{
+      console.log("GET RESOURCES WITH PAGIMATION...... ");
         this.isLoading = true;
-        return this.http.get('http://127.0.0.1:8000/api/resource')
+        return this.http.get('http://127.0.0.1:8000/api/resources')
         .toPromise()
         .then((response) => {
+          console.log("RESPONSE : ", response);
             this.isLoading = false;
             return response  as PaginatedResource
         })
