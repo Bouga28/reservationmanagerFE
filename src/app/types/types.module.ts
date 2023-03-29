@@ -5,6 +5,7 @@ import { TypesRoutingModule } from './types-routing.module';
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { EditComponent } from './edit/edit.component';
   ],
   imports: [
     CommonModule,
-    TypesRoutingModule
+    TypesRoutingModule,
+    FormsModule
   ]
 })
 export class TypesModule { }
