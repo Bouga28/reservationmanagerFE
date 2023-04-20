@@ -11,7 +11,7 @@ export class ResourcesService {
 
   get() {
     console.log("GET RESOURCES ...... ");
-    return this.http.get<Resource[]>('http://127.0.0.1:8000/api/resources');
+    return this.http.get<Resource[]>('http://127.0.0.1:8000/api/resource');
   }
   create(payload: Resource) {
     return this.http.post<Resource>('http://127.0.0.1:8000/api/resource', payload);
