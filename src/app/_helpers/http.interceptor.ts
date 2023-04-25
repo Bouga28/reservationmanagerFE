@@ -7,14 +7,22 @@ import { StorageService } from '../_services/storage.service';
 import { EventBusService } from '../_shared/event-bus.service';
 import { EventData } from '../_shared/event.class';
 
+
+const TOKEN_HEADER_KEY = 'Authorization';       // for Spring Boot back-end
+//const TOKEN_HEADER_KEY = 'x-access-token';   // for Node.js Express back-end
+
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {
   private isRefreshing = false;
 
-  constructor(private storageService: StorageService, private eventBusService: EventBusService) { }
+  constructor(private token: StorageService,
+    private storageService: StorageService, 
+    private eventBusService: EventBusService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    req = req.clone({
+    
+    console.log('interceptor .................................');
+  /*  req = req.clone({
       withCredentials: true,
     });
 
@@ -30,7 +38,27 @@ export class HttpRequestInterceptor implements HttpInterceptor {
 
         return throwError(() => error);
       })
-    );
+    );*/
+
+    let authReq = req;
+    console.log('user : ', this.token.getUser());
+    const token = this.token.getUser().token;
+    console.log("hello : token +++++++++++ ", token);
+    if (token != null) {
+      // for Spring Boot back-end
+       authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
+      console.log("hello : +++++++++++ ", authReq);
+      // for Node.js Express back-end
+      //authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, token) });
+    }
+    return next.handle(authReq);
+  
+
+
+
+
+
+
   }
 
   private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
